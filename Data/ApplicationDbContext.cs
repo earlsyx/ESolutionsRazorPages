@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace ESolutionsRazorPages.Data
 {
@@ -9,5 +10,13 @@ namespace ESolutionsRazorPages.Data
             : base(options)
         {
         }
+
+        public DbSet<Course> course { get; set; }
     }
+}
+
+public class Course
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
 }

@@ -1,3 +1,4 @@
+using ESolutionsRazorPages;
 using ESolutionsRazorPages.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,13 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AddFolderApplicationModelConvention("/Courses", model =>
+    {
+        model.Filters.Add(new ValidateModelStatePageFilter());
+    });
+});
 
 builder.Services.Configure<RouteOptions>(options =>
 {

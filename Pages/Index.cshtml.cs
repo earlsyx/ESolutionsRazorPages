@@ -26,8 +26,9 @@ namespace ESolutionsRazorPages.Pages
             string? privacyLink2 = _linkGenerator.GetPathByPage(HttpContext, pageName);
             string? privacyLink3 = _linkGenerator.GetUriByPage(HttpContext, pageName);
 
-            return RedirectToPage(pageName);
+            //return RedirectToPage(pageName);
             //return NotFound();
+            return Page();
         }
 
         public void OnGetSpecial()
