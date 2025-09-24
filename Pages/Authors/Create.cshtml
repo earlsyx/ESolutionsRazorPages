@@ -8,15 +8,60 @@
         <h1>Create</h1>
         
     <h4>Author</h4>
+    <environment names="Production">
+        <h3>This is PRODUCTION DATA</h3>
+    </environment>
+    <environment names="Development, Staging">
+        <h3>This is TEST DATA</h3>
+    </environment>
+    <a asp-page="/Course/Index">Courses</a>
     <hr />
     <div class="row">
     <div class="col-md-4">
     <form method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Author.Name" class="control-label"></label>
-                <input asp-for="Author.Name" class="form-control" />
-                <span asp-validation-for="Author.Name" class="text-danger"></span>
+                <label asp-for="InputModel.Name" class="control-label"></label>
+                <input asp-for="InputModel.Name" class="form-control" />
+                <span asp-validation-for="InputModel.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputModel.EmailAddress" class="control-label"></label>
+                <input asp-for="InputModel.EmailAddress" class="form-control" />
+                <span asp-validation-for="InputModel.EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputModel.PhoneNumber" class="control-label"></label>
+                <input asp-for="InputModel.PhoneNumber" class="form-control" />
+                <span asp-validation-for="InputModel.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputModel.IsActive" class="control-label"></label>
+                <input asp-for="InputModel.IsActive"/>
+                <span asp-validation-for="InputModel.IsActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputModel.FavoriteColor" class="control-label"></label>
+                <input asp-for="InputModel.FavoriteColor" type="color" class="form-control" />
+                <span asp-validation-for="InputModel.FavoriteColor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputModel.CoursesAuthored" class="control-label"></label>
+                <select asp-for="InputModel.CoursesAuthored" class="form-control" 
+                asp-items="Model.AllCourses" multiple></select>
+                <span asp-validation-for="InputModel.CoursesAuthored" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputModel.DateOfBirth" class="control-label"></label>
+                <input asp-for="InputModel.DateOfBirth" class="form-control" />
+                <span asp-validation-for="InputModel.DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputModel.EmploymentType" class="control-label"></label>
+                <select asp-for="InputModel.EmploymentType" asp-items="Html.GetEnumSelectList<EmploymentType>()" class="form-control" >
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="InputModel.EmploymentType" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
